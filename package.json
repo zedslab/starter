@@ -1,0 +1,19 @@
+{
+  "name": "red-venom-template",
+  "description": "RED Template Application for Rapid and Secure AI-Developed Applications",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Janak Alford",
+  "license": "MIT",
+  "scripts": {
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "dev-all": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\"",
+    "dev-backend": "concurrently \"cd backend && npm run dev\"",
+    "dev-frontend": "concurrently \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
