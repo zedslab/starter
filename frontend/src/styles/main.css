@@ -1,0 +1,1109 @@
+@import 'tailwindcss';
+
+/* ==========================================
+   Alberta.ca Design System - Tailwind 4 Implementation
+   
+   This CSS file implements the complete Alberta.ca design system
+   using Tailwind 4's new @import syntax and CSS custom properties.
+   
+   Based on: https://design.alberta.ca/
+   Design Tokens: https://design.alberta.ca/design-tokens
+   Active CSS: https://design.alberta.ca/assets/index-BafnKujx.css
+   ========================================== */
+
+/* ==========================================
+   CSS Custom Properties - Alberta.ca Design Tokens
+   ========================================== */
+
+:root {
+  /* ==========================================
+     Color System - Interactive Colors
+     ========================================== */
+  --goa-color-interactive-default: #0070C4;
+  --goa-color-interactive-hover: #004F84;
+  --goa-color-interactive-disabled: #80B7E1;
+  --goa-color-interactive-visited: #756693;
+  --goa-color-interactive-focus: #FEBA35;
+  --goa-color-interactive-error: #EC040B;
+  --goa-color-interactive-error-hover: #BA0000;
+  --goa-color-interactive-error-disabled: #F58185;
+
+  /* ==========================================
+     Color System - Text Colors
+     ========================================== */
+  --goa-color-text-default: #333333;
+  --goa-color-text-secondary: #666666;
+  --goa-color-text-light: #FFFFFF;
+  --goa-color-text-disabled: #666666;
+
+  /* ==========================================
+     Color System - Brand Colors
+     ========================================== */
+  --goa-color-brand-default: #0081A2;
+  --goa-color-brand-dark: #005072;
+  --goa-color-brand-light: #C8EEFA;
+
+  /* ==========================================
+     Color System - Status Colors
+     ========================================== */
+  --goa-color-status-info-default: #004A8F;
+  --goa-color-status-info-light: #AAC9E7;
+  --goa-color-status-info-dark: #003B70;
+  --goa-color-status-info-background: #EFF8FF;
+
+  --goa-color-status-warning-default: #F9CE2D;
+  --goa-color-status-warning-light: #FFEAB6;
+  --goa-color-status-warning-dark: #BF8D23;
+  --goa-color-status-warning-background: #FFF6E5;
+
+  --goa-color-status-emergency-default: #DA291C;
+  --goa-color-status-emergency-light: #FBD1CE;
+  --goa-color-status-emergency-dark: #A91A10;
+  --goa-color-status-emergency-background: #FFF1F2;
+
+  --goa-color-status-success-default: #006F4C;
+  --goa-color-status-success-light: #CCE4DC;
+  --goa-color-status-success-dark: #00563A;
+  --goa-color-status-success-background: #EEF9F3;
+
+  --goa-color-status-critical: #171D23;
+
+  /* ==========================================
+     Color System - Greyscale Colors
+     ========================================== */
+  --goa-color-greyscale-white: #FFFFFF;
+  --goa-color-greyscale-50: #F8F8F8;
+  --goa-color-greyscale-100: #F1F1F1;
+  --goa-color-greyscale-150: #E7E7E7;
+  --goa-color-greyscale-200: #DCDCDC;
+  --goa-color-greyscale-300: #C2C2C2;
+  --goa-color-greyscale-400: #ADADAD;
+  --goa-color-greyscale-500: #949494;
+  --goa-color-greyscale-600: #858585;
+  --goa-color-greyscale-700: #666666;
+  --goa-color-greyscale-800: #5C5C5C;
+  --goa-color-greyscale-900: #474747;
+  --goa-color-greyscale-black: #333333;
+
+  /* ==========================================
+     Color System - Extended Colors
+     ========================================== */
+  --goa-color-extended-aqua-default: #7FEBE6;
+  --goa-color-extended-aqua-light: #DCFBF8;
+  --goa-color-extended-blue-default: #AAC9E7;
+  --goa-color-extended-blue-light: #DDEFFF;
+  --goa-color-extended-green-default: #BBFCB4;
+  --goa-color-extended-green-light: #CCE2D9;
+  --goa-color-extended-orange-default: #FFC76D;
+  --goa-color-extended-orange-light: #FCD6C3;
+  --goa-color-extended-pink-default: #FF8FC5;
+  --goa-color-extended-pink-light: #F9E1EB;
+  --goa-color-extended-red-default: #ED948D;
+  --goa-color-extended-red-light: #F4CDC6;
+  --goa-color-extended-violet-default: #D4C2FF;
+  --goa-color-extended-violet-light: #EFE2FB;
+  --goa-color-extended-yellow-default: #FCE796;
+  --goa-color-extended-yellow-light: #FFF7BF;
+
+  /* ==========================================
+     Typography System - Font Families
+     ========================================== */
+  --goa-font-family-sans: 'Acumin Pro SemiCondensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --goa-font-family-mono: 'Roboto Mono', 'Courier New', Consolas, Monaco, monospace;
+
+  /* ==========================================
+     Typography System - Font Sizes
+     ========================================== */
+  --goa-font-size-1: 0.875rem; /* 14px */
+  --goa-font-size-2: 1rem; /* 16px */
+  --goa-font-size-3: 1.125rem; /* 18px */
+  --goa-font-size-4: 1.5rem; /* 24px */
+  --goa-font-size-5: 2.25rem; /* 36px */
+  --goa-font-size-6: 3rem; /* 48px */
+
+  /* ==========================================
+     Typography System - Line Heights
+     ========================================== */
+  --goa-line-height-1: 1.25rem; /* 20px */
+  --goa-line-height-2: 1.5rem; /* 24px */
+  --goa-line-height-3: 1.75rem; /* 28px */
+  --goa-line-height-4: 2rem; /* 32px */
+  --goa-line-height-5: 2.75rem; /* 44px */
+  --goa-line-height-6: 3.5rem; /* 56px */
+
+  /* ==========================================
+     Typography System - Complete Typography Tokens
+     ========================================== */
+  --goa-typography-heading-xl: bold 3rem/3.5rem var(--goa-font-family-sans);
+  --goa-typography-heading-l: normal 2.25rem/2.75rem var(--goa-font-family-sans);
+  --goa-typography-heading-m: normal 1.5rem/2rem var(--goa-font-family-sans);
+  --goa-typography-heading-s: bold 1.125rem/1.75rem var(--goa-font-family-sans);
+  --goa-typography-heading-xs: bold 1rem/1.5rem var(--goa-font-family-sans);
+  --goa-typography-body-l: normal 1.5rem/2rem var(--goa-font-family-sans);
+  --goa-typography-body-m: normal 1.125rem/1.75rem var(--goa-font-family-sans);
+  --goa-typography-body-s: normal 1rem/1.5rem var(--goa-font-family-sans);
+  --goa-typography-body-xs: normal 0.875rem/1.25rem var(--goa-font-family-sans);
+  --goa-typography-number-l: normal 1.5rem/2rem var(--goa-font-family-mono);
+  --goa-typography-number-m: normal 1.125rem/1.75rem var(--goa-font-family-mono);
+  --goa-typography-number-s: normal 1rem/1.5rem var(--goa-font-family-mono);
+
+  /* ==========================================
+     Spacing System - Alberta.ca Spacing Scale
+     ========================================== */
+  --goa-space-none: 0rem; /* 0px */
+  --goa-space-3xs: 0.125rem; /* 2px */
+  --goa-space-2xs: 0.25rem; /* 4px */
+  --goa-space-xs: 0.5rem; /* 8px */
+  --goa-space-s: 0.75rem; /* 12px */
+  --goa-space-m: 1rem; /* 16px */
+  --goa-space-l: 1.5rem; /* 24px */
+  --goa-space-xl: 2rem; /* 32px */
+  --goa-space-2xl: 3rem; /* 48px */
+  --goa-space-3xl: 4rem; /* 64px */
+  --goa-space-4xl: 8rem; /* 128px */
+
+  /* ==========================================
+     Border and Shadow System
+     ========================================== */
+  --goa-border-radius-s: 4px;
+  --goa-border-radius-m: 8px;
+  --goa-border-radius-l: 12px;
+  --goa-border-radius-xl: 16px;
+
+  --goa-border-width-s: 1px;
+  --goa-border-width-m: 2px;
+  --goa-border-width-l: 4px;
+
+  --goa-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --goa-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --goa-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --goa-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ==========================================
+     Layout System - Container and Breakpoints
+     ========================================== */
+  --goa-container-max-width: 1440px;
+  --goa-side-menu-width: 250px;
+  --goa-breakpoint-tablet: 1231px;
+  --goa-breakpoint-mobile: 896px;
+  --goa-breakpoint-small-mobile: 623px;
+
+  /* ==========================================
+     Transition System
+     ========================================== */
+  --goa-transition-fast: 0.15s ease-in-out;
+  --goa-transition-normal: 0.3s ease-in-out;
+  --goa-transition-slow: 0.5s ease-in-out;
+}
+
+/* ==========================================
+   Base Layer - Foundation Styles
+   ========================================== */
+
+@layer base {
+  /* Reset and base styles */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--goa-font-family-sans);
+    line-height: var(--goa-line-height-3);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--goa-color-greyscale-white);
+    color: var(--goa-color-text-default);
+    font-size: var(--goa-font-size-2);
+    line-height: var(--goa-line-height-3);
+  }
+
+  /* Typography hierarchy using Alberta.ca design tokens */
+  h1 {
+    font: var(--goa-typography-heading-xl);
+    color: var(--goa-color-text-default);
+    margin: 0 0 var(--goa-space-l) 0;
+  }
+
+  h2 {
+    font: var(--goa-typography-heading-l);
+    color: var(--goa-color-text-default);
+    margin: var(--goa-space-xl) 0 var(--goa-space-m) 0;
+  }
+
+  h3 {
+    font: var(--goa-typography-heading-m);
+    color: var(--goa-color-text-default);
+    margin: var(--goa-space-l) 0 var(--goa-space-s) 0;
+  }
+
+  h4 {
+    font: var(--goa-typography-heading-s);
+    color: var(--goa-color-text-default);
+    margin: var(--goa-space-m) 0 var(--goa-space-s) 0;
+  }
+
+  h5,
+  h6 {
+    font: var(--goa-typography-heading-xs);
+    color: var(--goa-color-text-default);
+    margin: var(--goa-space-m) 0 var(--goa-space-xs) 0;
+  }
+
+  p {
+    font: var(--goa-typography-body-m);
+    color: var(--goa-color-text-default);
+    margin: 0 0 var(--goa-space-m) 0;
+  }
+
+  /* Links with Alberta.ca interactive colors */
+  a {
+    color: var(--goa-color-interactive-default);
+    text-decoration: underline;
+    text-underline-offset: 0.125em;
+    transition: color var(--goa-transition-fast);
+  }
+
+  a:hover {
+    color: var(--goa-color-interactive-hover);
+  }
+
+  a:visited {
+    color: var(--goa-color-interactive-visited);
+  }
+
+  a:focus {
+    outline: 2px solid var(--goa-color-interactive-focus);
+    outline-offset: 2px;
+    border-radius: var(--goa-border-radius-s);
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    margin: 0 0 var(--goa-space-m) 0;
+    padding-left: var(--goa-space-l);
+  }
+
+  li {
+    margin-bottom: var(--goa-space-xs);
+  }
+
+  /* Code and monospace elements */
+  code,
+  kbd,
+  samp,
+  pre {
+    font: var(--goa-typography-number-s);
+    background-color: var(--goa-color-greyscale-100);
+    padding: var(--goa-space-3xs) var(--goa-space-2xs);
+    border-radius: var(--goa-border-radius-s);
+  }
+
+  pre {
+    padding: var(--goa-space-m);
+    overflow-x: auto;
+    border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+  }
+
+  /* Form elements */
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  /* Horizontal rule */
+  hr {
+    border: none;
+    border-top: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+    margin: var(--goa-space-xl) 0;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--goa-space-m);
+  }
+
+  th,
+  td {
+    padding: var(--goa-space-s) var(--goa-space-m);
+    text-align: left;
+    border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+  }
+
+  th {
+    font: var(--goa-typography-heading-xs);
+    background-color: var(--goa-color-greyscale-50);
+  }
+}
+
+/* ==========================================
+   Components Layer - Alberta.ca Components
+   ========================================== */
+
+@layer components {
+  /* ==========================================
+     Layout Components
+     ========================================== */
+  
+  .goa-container {
+    max-width: var(--goa-container-max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--goa-space-m);
+  }
+
+  .goa-content {
+    display: flex;
+    align-items: stretch;
+    gap: var(--goa-space-xl);
+    padding: var(--goa-space-m);
+  }
+
+  .goa-main {
+    flex: 1 1 auto;
+    line-height: var(--goa-line-height-3);
+  }
+
+  .goa-sidebar {
+    min-width: var(--goa-side-menu-width);
+    width: var(--goa-side-menu-width);
+    border-right: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+    padding-bottom: var(--goa-space-l);
+  }
+
+  /* ==========================================
+     Card Components
+     ========================================== */
+  
+  .goa-card {
+    background-color: var(--goa-color-greyscale-white);
+    border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+    border-radius: var(--goa-border-radius-m);
+    padding: var(--goa-space-l);
+    box-shadow: var(--goa-shadow-sm);
+    transition: box-shadow var(--goa-transition-normal);
+  }
+
+  .goa-card:hover {
+    box-shadow: var(--goa-shadow-md);
+  }
+
+  .goa-card-header {
+    margin-bottom: var(--goa-space-m);
+    padding-bottom: var(--goa-space-s);
+    border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-150);
+  }
+
+  .goa-card-title {
+    font: var(--goa-typography-heading-s);
+    margin: 0;
+  }
+
+  .goa-card-content {
+    font: var(--goa-typography-body-s);
+  }
+
+  .goa-card-footer {
+    margin-top: var(--goa-space-m);
+    padding-top: var(--goa-space-s);
+    border-top: var(--goa-border-width-s) solid var(--goa-color-greyscale-150);
+  }
+
+  /* ==========================================
+     Button Components
+     ========================================== */
+  
+  .goa-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--goa-space-xs);
+    font: var(--goa-typography-body-s);
+    font-weight: 600;
+    padding: var(--goa-space-s) var(--goa-space-l);
+    border: var(--goa-border-width-s) solid transparent;
+    border-radius: var(--goa-border-radius-s);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--goa-transition-fast);
+    min-height: 44px; /* Accessibility: minimum touch target */
+  }
+
+  .goa-button:focus {
+    outline: 2px solid var(--goa-color-interactive-focus);
+    outline-offset: 2px;
+  }
+
+  /* Primary button */
+  .goa-button--primary {
+    background-color: var(--goa-color-interactive-default);
+    color: var(--goa-color-text-light);
+    border-color: var(--goa-color-interactive-default);
+  }
+
+  .goa-button--primary:hover {
+    background-color: var(--goa-color-interactive-hover);
+    border-color: var(--goa-color-interactive-hover);
+    color: var(--goa-color-text-light);
+  }
+
+  .goa-button--primary:disabled {
+    background-color: var(--goa-color-interactive-disabled);
+    border-color: var(--goa-color-interactive-disabled);
+    color: var(--goa-color-text-light);
+    cursor: not-allowed;
+  }
+
+  /* Secondary button */
+  .goa-button--secondary {
+    background-color: transparent;
+    color: var(--goa-color-interactive-default);
+    border-color: var(--goa-color-interactive-default);
+  }
+
+  .goa-button--secondary:hover {
+    background-color: var(--goa-color-interactive-default);
+    color: var(--goa-color-text-light);
+  }
+
+  .goa-button--secondary:disabled {
+    color: var(--goa-color-interactive-disabled);
+    border-color: var(--goa-color-interactive-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Tertiary button */
+  .goa-button--tertiary {
+    background-color: transparent;
+    color: var(--goa-color-interactive-default);
+    border-color: transparent;
+    padding: var(--goa-space-xs) var(--goa-space-s);
+  }
+
+  .goa-button--tertiary:hover {
+    background-color: var(--goa-color-greyscale-100);
+    color: var(--goa-color-interactive-hover);
+  }
+
+  .goa-button--tertiary:disabled {
+    color: var(--goa-color-interactive-disabled);
+    cursor: not-allowed;
+  }
+
+  /* Error/Danger button */
+  .goa-button--error {
+    background-color: var(--goa-color-interactive-error);
+    color: var(--goa-color-text-light);
+    border-color: var(--goa-color-interactive-error);
+  }
+
+  .goa-button--error:hover {
+    background-color: var(--goa-color-interactive-error-hover);
+    border-color: var(--goa-color-interactive-error-hover);
+    color: var(--goa-color-text-light);
+  }
+
+  .goa-button--error:disabled {
+    background-color: var(--goa-color-interactive-error-disabled);
+    border-color: var(--goa-color-interactive-error-disabled);
+    color: var(--goa-color-text-light);
+    cursor: not-allowed;
+  }
+
+  /* Button sizes */
+  .goa-button--small {
+    font: var(--goa-typography-body-xs);
+    padding: var(--goa-space-xs) var(--goa-space-m);
+    min-height: 36px;
+  }
+
+  .goa-button--large {
+    font: var(--goa-typography-body-m);
+    padding: var(--goa-space-m) var(--goa-space-xl);
+    min-height: 52px;
+  }
+
+
+
+
+  /* ==========================================
+     Hero Sections 
+     ========================================== */
+
+.hero-section {
+  background-color: var(--goa-color-brand-light);
+  padding: var(--goa-space-3xl) 0;
+  margin-bottom: var(--goa-space-3xl);
+  border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+}
+
+.hero-text {
+  font: var(--goa-typography-body-l);
+  color: var(--goa-color-text-secondary);
+  max-width: 72ch;
+  margin: var(--goa-space-l) 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--goa-space-m);
+  margin-top: var(--goa-space-xl);
+}
+
+.features-section {
+  margin-bottom: var(--goa-space-4xl);
+}
+
+.section-intro {
+  font: var(--goa-typography-body-m);
+  color: var(--goa-color-text-secondary);
+  max-width: 72ch;
+  margin: var(--goa-space-m) 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--goa-space-l);
+  margin-top: var(--goa-space-l);
+}
+
+.cta-section {
+  background-color: var(--goa-color-greyscale-50);
+  padding: var(--goa-space-3xl) 0;
+  margin-bottom: var(--goa-space-4xl);
+  border-top: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+  border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+}
+
+.cta-text {
+  font: var(--goa-typography-body-m);
+  color: var(--goa-color-text-secondary);
+  max-width: 72ch;
+  margin: var(--goa-space-m) 0;
+}
+
+.cta-actions {
+  display: flex;
+  gap: var(--goa-space-m);
+  margin-top: var(--goa-space-xl);
+}
+
+.footer-section {
+  background-color: var(--goa-color-greyscale-100);
+  padding: var(--goa-space-2xl) 0;
+}
+
+.footer-text {
+  font: var(--goa-typography-body-s);
+  color: var(--goa-color-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+
+  /* ==========================================
+     Form Components
+     ========================================== */
+  
+  .goa-form-group {
+    margin-bottom: var(--goa-space-l);
+  }
+
+  .goa-label {
+    display: block;
+    font: var(--goa-typography-heading-xs);
+    color: var(--goa-color-text-default);
+    margin-bottom: var(--goa-space-xs);
+  }
+
+  .goa-label--required::after {
+    content: " *";
+    color: var(--goa-color-interactive-error);
+  }
+
+  .goa-input,
+  .goa-textarea,
+  .goa-select {
+    width: 100%;
+    font: var(--goa-typography-body-s);
+    padding: var(--goa-space-s) var(--goa-space-m);
+    border: var(--goa-border-width-s) solid var(--goa-color-greyscale-300);
+    border-radius: var(--goa-border-radius-s);
+    background-color: var(--goa-color-greyscale-white);
+    color: var(--goa-color-text-default);
+    transition: border-color var(--goa-transition-fast), box-shadow var(--goa-transition-fast);
+    min-height: 44px; /* Accessibility: minimum touch target */
+  }
+
+  .goa-input:focus,
+  .goa-textarea:focus,
+  .goa-select:focus {
+    outline: none;
+    border-color: var(--goa-color-interactive-default);
+    box-shadow: 0 0 0 2px var(--goa-color-interactive-focus);
+  }
+
+  .goa-input:disabled,
+  .goa-textarea:disabled,
+  .goa-select:disabled {
+    background-color: var(--goa-color-greyscale-100);
+    color: var(--goa-color-text-disabled);
+    cursor: not-allowed;
+  }
+
+  .goa-input--error,
+  .goa-textarea--error,
+  .goa-select--error {
+    border-color: var(--goa-color-interactive-error);
+  }
+
+  .goa-input--error:focus,
+  .goa-textarea--error:focus,
+  .goa-select--error:focus {
+    box-shadow: 0 0 0 2px var(--goa-color-interactive-error);
+  }
+
+  .goa-help-text {
+    font: var(--goa-typography-body-xs);
+    color: var(--goa-color-text-secondary);
+    margin-top: var(--goa-space-xs);
+  }
+
+  .goa-error-text {
+    font: var(--goa-typography-body-xs);
+    color: var(--goa-color-interactive-error);
+    margin-top: var(--goa-space-xs);
+  }
+
+  /* ==========================================
+     Status/Alert Components
+     ========================================== */
+  
+  .goa-alert {
+    padding: var(--goa-space-m);
+    border-radius: var(--goa-border-radius-s);
+    border-left: 4px solid;
+    margin-bottom: var(--goa-space-m);
+  }
+
+  .goa-alert__title {
+    font: var(--goa-typography-heading-xs);
+    margin: 0 0 var(--goa-space-xs) 0;
+  }
+
+  .goa-alert__content {
+    font: var(--goa-typography-body-s);
+    margin: 0;
+  }
+
+  .goa-alert--info {
+    background-color: var(--goa-color-status-info-background);
+    border-left-color: var(--goa-color-status-info-default);
+    color: var(--goa-color-status-info-dark);
+  }
+
+  .goa-alert--warning {
+    background-color: var(--goa-color-status-warning-background);
+    border-left-color: var(--goa-color-status-warning-default);
+    color: var(--goa-color-status-warning-dark);
+  }
+
+  .goa-alert--error {
+    background-color: var(--goa-color-status-emergency-background);
+    border-left-color: var(--goa-color-status-emergency-default);
+    color: var(--goa-color-status-emergency-dark);
+  }
+
+  .goa-alert--success {
+    background-color: var(--goa-color-status-success-background);
+    border-left-color: var(--goa-color-status-success-default);
+    color: var(--goa-color-status-success-dark);
+  }
+
+  /* ==========================================
+     Navigation Components
+     ========================================== */
+  
+  .goa-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--goa-space-xs);
+    margin-bottom: var(--goa-space-l);
+    font: var(--goa-typography-body-s);
+  }
+
+  .goa-breadcrumb__separator {
+    color: var(--goa-color-text-secondary);
+  }
+
+  .goa-breadcrumb__link {
+    color: var(--goa-color-interactive-default);
+    text-decoration: none;
+  }
+
+  .goa-breadcrumb__link:hover {
+    color: var(--goa-color-interactive-hover);
+    text-decoration: underline;
+  }
+
+  .goa-breadcrumb__current {
+    color: var(--goa-color-text-default);
+    font-weight: 600;
+  }
+
+  /* ==========================================
+     Table Components
+     ========================================== */
+  
+  .goa-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--goa-space-l);
+    background-color: var(--goa-color-greyscale-white);
+    border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+    border-radius: var(--goa-border-radius-s);
+    overflow: hidden;
+  }
+
+  .goa-table__header {
+    background-color: var(--goa-color-greyscale-100);
+  }
+
+  .goa-table__header-cell {
+    font: var(--goa-typography-heading-xs);
+    padding: var(--goa-space-m);
+    text-align: left;
+    border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+  }
+
+  .goa-table__cell {
+    font: var(--goa-typography-body-s);
+    padding: var(--goa-space-m);
+    border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-150);
+  }
+
+  .goa-table__row:hover {
+    background-color: var(--goa-color-greyscale-50);
+  }
+
+  /* ==========================================
+     Utility Components
+     ========================================== */
+  
+  .goa-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  .goa-skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--goa-color-interactive-default);
+    color: var(--goa-color-text-light);
+    padding: var(--goa-space-s) var(--goa-space-m);
+    text-decoration: none;
+    border-radius: var(--goa-border-radius-s);
+    z-index: 1000;
+    transition: top var(--goa-transition-fast);
+  }
+
+  .goa-skip-link:focus {
+    top: 6px;
+  }
+}
+
+/* ==========================================
+   Utilities Layer - Responsive Design
+   ========================================== */
+
+@layer utilities {
+  /* ==========================================
+     Responsive Utilities
+     ========================================== */
+
+  /* Tablet styles */
+  @media screen and (max-width: 1231px) {
+    .goa-container {
+      padding: 0 var(--goa-space-l);
+    }
+
+    .goa-content {
+      gap: var(--goa-space-l);
+    }
+
+    .goa-main {
+      margin-right: var(--goa-space-xl);
+      margin-left: var(--goa-space-xl);
+    }
+  }
+
+  /* Mobile styles */
+  @media screen and (max-width: 896px) {
+    .goa-container {
+      padding: 0 var(--goa-space-m);
+    }
+
+    .goa-content {
+      flex-direction: column;
+      gap: var(--goa-space-m);
+    }
+
+    .goa-sidebar {
+      width: 100%;
+      min-width: auto;
+      border-right: none;
+      border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+      padding-bottom: var(--goa-space-l);
+    }
+
+    .goa-main {
+      margin: 0;
+    }
+
+    /* Stack buttons on mobile */
+    .goa-button-group {
+      flex-direction: column;
+      gap: var(--goa-space-s);
+    }
+
+    .goa-button-group .goa-button {
+      width: 100%;
+    }
+
+    /* Responsive table */
+    .goa-table {
+      font-size: var(--goa-font-size-1);
+    }
+
+    .goa-table__header-cell,
+    .goa-table__cell {
+      padding: var(--goa-space-s);
+    }
+
+
+  .hero-actions,
+  .cta-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  }
+
+  /* Small mobile styles */
+  @media screen and (max-width: 623px) {
+    .goa-container {
+      padding: 0 var(--goa-space-s);
+    }
+
+    h1 {
+      font-size: var(--goa-font-size-5);
+      line-height: var(--goa-line-height-5);
+    }
+
+    h2 {
+      font-size: var(--goa-font-size-4);
+      line-height: var(--goa-line-height-4);
+    }
+
+    .goa-card {
+      padding: var(--goa-space-m);
+    }
+
+  .hero-section,
+  .cta-section {
+    padding: var(--goa-space-xl) 0;
+  }
+
+  .hero-text,
+  .section-intro,
+  .cta-text {
+    font: var(--goa-typography-body-s);
+  }
+
+  }
+
+  /* ==========================================
+     Print Styles
+     ========================================== */
+  
+  @media print {
+    .goa-sidebar,
+    .goa-button,
+    .goa-skip-link {
+      display: none !important;
+    }
+
+    .goa-main {
+      margin: 0 !important;
+    }
+
+    .goa-card {
+      border: var(--goa-border-width-s) solid var(--goa-color-greyscale-400) !important;
+      box-shadow: none !important;
+    }
+
+    a {
+      color: var(--goa-color-text-default) !important;
+      text-decoration: underline !important;
+    }
+
+    a[href^="http"]:after {
+      content: " (" attr(href) ")";
+      font-size: var(--goa-font-size-1);
+      color: var(--goa-color-text-secondary);
+    }
+  }
+
+  /* ==========================================
+     High Contrast Mode Support
+     ========================================== */
+  
+  @media (prefers-contrast: high) {
+    :root {
+      --goa-color-interactive-default: #0000EE;
+      --goa-color-interactive-hover: #0000AA;
+      --goa-color-text-default: #000000;
+      --goa-color-text-secondary: #333333;
+      --goa-color-greyscale-200: #666666;
+      --goa-color-greyscale-300: #999999;
+    }
+
+    .goa-button {
+      border-width: var(--goa-border-width-m);
+    }
+
+    .goa-input,
+    .goa-textarea,
+    .goa-select {
+      border-width: var(--goa-border-width-m);
+    }
+  }
+
+  /* ==========================================
+     Reduced Motion Support
+     ========================================== */
+  
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ==========================================
+     Dark Mode Support (Future Enhancement)
+     ========================================== */
+  
+  @media (prefers-color-scheme: dark) {
+    /* Note: Alberta.ca design system doesn't currently specify dark mode colors
+       This section is prepared for future dark mode implementation */
+    
+    /* Uncomment and customize when dark mode tokens are available
+    :root {
+      --goa-color-greyscale-white: #1a1a1a;
+      --goa-color-text-default: #ffffff;
+      --goa-color-text-secondary: #cccccc;
+      --goa-color-greyscale-100: #2a2a2a;
+      --goa-color-greyscale-200: #3a3a3a;
+    }
+    */
+  }
+}
+
+
+
+/* App-specific global styles */
+#app {
+  min-height: 100vh;
+  background-color: var(--goa-color-greyscale-white);
+  color: var(--goa-color-text-default);
+}
+
+/* Ensure smooth transitions between routes */
+.router-link-active {
+  color: var(--goa-color-interactive-default);
+  font-weight: 600;
+}
+
+/* Focus styles for keyboard navigation */
+.router-link:focus {
+  outline: 2px solid var(--goa-color-interactive-focus);
+  outline-offset: 2px;
+  border-radius: var(--goa-border-radius-s);
+}
+
+/* Loading state for route transitions */
+.route-enter-active,
+.route-leave-active {
+  transition: opacity var(--goa-transition-normal);
+}
+
+.route-enter-from,
+.route-leave-to {
+  opacity: 0;
+}
+
+/* Ensure proper font loading */
+@font-face {
+  font-family: 'Acumin Pro SemiCondensed';
+  font-display: swap;
+  /* Font files should be loaded via Adobe Typekit or local files */
+}
+
+/* Print styles for the entire application */
+@media print {
+  #app {
+    background-color: white !important;
+  }
+  
+  /* Hide navigation elements when printing */
+  .router-link {
+    color: var(--goa-color-text-default) !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  #app {
+    background-color: white;
+    color: black;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .route-enter-active,
+  .route-leave-active {
+    transition: none !important;
+  }
+}
