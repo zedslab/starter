@@ -1,0 +1,59 @@
+{
+  "name": "red-venom-template-backend",
+  "version": "0.0.1",
+  "description": "Backend for the RED VENOM Template Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon",
+    "swagger": "node swagger.js"
+  },
+  "_moduleAliases": {
+    "@": ".",
+    "@controllers": "./controllers",
+    "@models": "./models",
+    "@routes": "./routes"
+  },
+  "author": "Janak Alford",
+  "license": "MIT",
+  "dependencies": {
+    "@casl/ability": "^6.7.3",
+    "@casl/mongoose": "^8.0.3",
+    "bcrypt": "^6.0.0",
+    "compression": "^1.8.1",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.0.1",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "mongoose": "^8.17.0",
+    "morgan": "^1.10.1",
+    "nanoid": "^5.1.5",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-microsoft": "^2.1.0",
+    "require-all": "^3.0.0",
+    "sanitize-html": "^2.17.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "uuid": "^11.1.0",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.32.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.4",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
